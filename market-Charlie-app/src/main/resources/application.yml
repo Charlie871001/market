@@ -1,0 +1,5 @@
+spring:
+  config:
+    name: market-Charlie-app
+  profiles:
+    active: dev
