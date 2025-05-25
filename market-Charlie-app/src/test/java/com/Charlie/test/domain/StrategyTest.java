@@ -60,7 +60,7 @@ public class StrategyTest {
      */
     @Test
     public void test_getAssembleRandomVal() {
-        log.info("测试结果：{} - 奖品ID值", strategyArmory.getRandomAwardId(100002L));
+//        log.info("测试结果：{} - 奖品ID值", strategyArmory.getRandomAwardId(100002L));
     }
 
 }

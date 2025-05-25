@@ -1,8 +1,11 @@
 package com.Charlie.infrastructure.repository;
 
 import com.Charlie.domain.strategy.model.entity.StrategyAwardEntity;
+import com.Charlie.domain.strategy.model.entity.StrategyEntity;
 import com.Charlie.domain.strategy.repository.IStrategyRepository;
 import com.Charlie.infrastructure.persistent.dao.IStrategyAwardDao;
+import com.Charlie.infrastructure.persistent.dao.IStrategyDao;
+import com.Charlie.infrastructure.persistent.po.Strategy;
 import com.Charlie.infrastructure.persistent.po.StrategyAward;
 import com.Charlie.infrastructure.redis.IRedisService;
 import com.Charlie.types.common.Constants;
@@ -27,6 +30,8 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Resource
     private IStrategyAwardDao strategyAwardDao;
+    @Resource
+    private IStrategyDao strategyDao;
 
     @Override
     public List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId) {
@@ -70,6 +75,22 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Override
     public Integer getStrategyAwardAssemble(Long strategyId, int rateKey) {
-        return redisService.getFromMap(Constants.RedisKey.STRATEGY_RATE_TABLE_KEY + strategyId,rateKey);
+        return redisService.getFromMap(Constants.RedisKey.STRATEGY_RATE_TABLE_KEY + strategyId, rateKey);
+    }
+
+    @Override
+    public StrategyEntity queryStrategyByStragetyId(Long strategyId) {
+        String cacheKey = Constants.RedisKey.STRATEGY_KEY + strategyId;
+        StrategyEntity strategyEntity = redisService.getValue(cacheKey);
+        if (null != strategyEntity) {
+            return strategyEntity;
+        }
+        Strategy strategy = strategyDao.queryStrategyByStrategyId(strategyId);
+        strategyEntity = StrategyEntity.builder()
+                .strategyId(strategy.getStrategyId())
+                .strategyDesc(strategy.getStrategyDesc())
+                .ruleModels(strategy.getRuleModels())
+                .build();
+        return strategyEntity;
     }
 }

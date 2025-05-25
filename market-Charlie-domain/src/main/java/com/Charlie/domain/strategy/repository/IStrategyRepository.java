@@ -1,6 +1,7 @@
 package com.Charlie.domain.strategy.repository;
 
 import com.Charlie.domain.strategy.model.entity.StrategyAwardEntity;
+import com.Charlie.domain.strategy.model.entity.StrategyEntity;
 
 import java.util.List;
 import java.util.Map;
@@ -20,4 +21,6 @@ public interface IStrategyRepository {
     int getRateRange(Long strategyId);
 
     Integer getStrategyAwardAssemble(Long strategyId, int rateKey);
+
+    StrategyEntity queryStrategyByStragetyId(Long strategyId);
 }
