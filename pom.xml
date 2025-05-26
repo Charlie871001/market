@@ -40,10 +40,9 @@
 
     <developers>
         <developer>
-            <name>xiaofuge</name>
-            <email>184172133@qq.com</email>
-            <organization>fuzhengwei</organization>
-            <organizationUrl>https://github.com/fuzhengwei</organizationUrl>
+            <name>Charlie</name>
+            <email>mahui871001@gmail.com</email>
+            <organization>mahui</organization>
         </developer>
     </developers>
 
@@ -73,7 +72,7 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.22</version>
+                <version>8.0.28</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -114,6 +113,11 @@
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
                 <version>1.15</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>3.23.4</version>
             </dependency>
 
             <!-- 工程模块 -->
