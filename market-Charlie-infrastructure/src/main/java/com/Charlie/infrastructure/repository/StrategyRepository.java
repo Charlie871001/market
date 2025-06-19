@@ -3,6 +3,7 @@ package com.Charlie.infrastructure.repository;
 import com.Charlie.domain.strategy.model.entity.StrategyAwardEntity;
 import com.Charlie.domain.strategy.model.entity.StrategyEntity;
 import com.Charlie.domain.strategy.model.entity.StrategyRuleEntity;
+import com.Charlie.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import com.Charlie.domain.strategy.repository.IStrategyRepository;
 import com.Charlie.infrastructure.persistent.dao.IStrategyAwardDao;
 import com.Charlie.infrastructure.persistent.dao.IStrategyDao;
@@ -128,5 +129,14 @@ public class StrategyRepository implements IStrategyRepository {
         strategyRule.setAwardId(awardId);
         strategyRule.setRuleModel(ruleModel);
         return strategyRuleDao.queryStrategyRuleValue(strategyRule);
+    }
+
+    @Override
+    public StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId) {
+        StrategyAward strategyAward = new StrategyAward();
+        strategyAward.setStrategyId(strategyId);
+        strategyAward.setAwardId(awardId);
+        String ruleModels = strategyAwardDao.queryStrategyAwardRuleModels(strategyAward);
+        return StrategyAwardRuleModelVO.builder().ruleModels(ruleModels).build();
     }
 }
