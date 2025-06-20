@@ -1,9 +1,8 @@
-package com.Charlie.domain.strategy.service.rule.factory;
+package com.Charlie.domain.strategy.service.rule.filter.factory;
 
 import com.Charlie.domain.strategy.model.entity.RuleActionEntity;
 import com.Charlie.domain.strategy.service.annotation.LogicStrategy;
-import com.Charlie.domain.strategy.service.enums.LogicModel;
-import com.Charlie.domain.strategy.service.rule.ILogicFilter;
+import com.Charlie.domain.strategy.service.rule.filter.ILogicFilter;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Service;
 
