@@ -50,7 +50,7 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
         Long nextValue = analyticalSortedKeys.stream().filter(key -> userScore >= key).max(Long::compare).orElse(null);
         // 4. 权重抽奖
         if (null != nextValue) {
-            Integer awardId = strategyDispatch.getRandomAwardId(strategyId, ruleModel());
+            Integer awardId = strategyDispatch.getRandomAwardId(strategyId, analyticalValueGroup.get(nextValue));
             log.info("抽奖责任链-权重接管 userId: {} strategyId: {} ruleModel: {} awardId: {}", userId, strategyId, ruleModel(), awardId);
             return awardId;
         }
